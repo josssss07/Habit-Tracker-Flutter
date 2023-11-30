@@ -1,9 +1,17 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
 
 class HabitTile extends StatelessWidget {
-  const HabitTile({super.key});
+  HabitTile({
+    super.key,
+    required this.habitName,
+    });
+
+  //habit variables
+  String habitName;
+
 
   @override
   Widget build(BuildContext context) {
@@ -19,16 +27,44 @@ class HabitTile extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
+                    //habit circle
+                    Row(children: [
+                      Container(
+                        width: 60,
+                        height: 60,
+                        child: Stack(
+                          children: [
+                            Center(child: CircularPercentIndicator(radius: 30)),
+                            Center(
+                              child: Icon(Icons.play_arrow)
+                              ),
+                        ],
+                        ),
+                      ),
+                    SizedBox(width: 20),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         //task name
-                        Text('Data'),
+                        Text(
+                          habitName,
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 19
+                          ),
+                        ),
 
                         //task progress
-                        Text('2:00 / 10:00 = 20%'),
+                        Text(
+                          '2:00 / 10:00 = 20%',
+                          style: TextStyle(
+                            color: Colors.grey
+                          ),
+                          ),
                       ],
                     ),  
+                    ],
+                    ),
                     Icon(Icons.settings),
                   ],
                 ),

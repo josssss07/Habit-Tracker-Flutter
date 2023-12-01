@@ -11,6 +11,10 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+  //habit list
+  //List HabitList,
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,9 +31,7 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Column(
         children: [
-          HabitTile(habitName: 'test'),
-          HabitTile(habitName: 'test'),
-          HabitTile(habitName: 'test')
+          HabitTile(habitName: 'Coding', habitStarted: false, onTap: (){}, settingsTapped: (){}, timeGoal: 20, timeSpent: 1)
         ],
       ),
     );

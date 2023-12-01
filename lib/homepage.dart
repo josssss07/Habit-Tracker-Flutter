@@ -13,7 +13,13 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
 
   //habit list
-  //List HabitList,
+  List habitList = [
+    //[habitname , habitstarted, timegoal, timeSpent]
+    ['Exercise', false, 10, 0],
+    ['Read', false, 20, 0],
+    ['Code', false, 60, 0],
+  ];
+
 
   @override
   Widget build(BuildContext context) {
@@ -29,11 +35,19 @@ class _HomePageState extends State<HomePage> {
         ),
         centerTitle: false,
       ),
-      body: Column(
-        children: [
-          HabitTile(habitName: 'Coding', habitStarted: false, onTap: (){}, settingsTapped: (){}, timeGoal: 20, timeSpent: 1)
-        ],
-      ),
+      body: ListView.builder(
+        itemCount: habitList.length,
+        itemBuilder: (context, index){
+          return HabitTile(
+            habitName:  habitList[index][0],
+            habitStarted: habitList[index][1], 
+            onTap: (){}, 
+            settingsTapped:(){} , 
+            timeGoal: habitList[index][2], 
+            timeSpent: habitList[index][3],
+          );
+        }
+        )
     );
   }
 }
